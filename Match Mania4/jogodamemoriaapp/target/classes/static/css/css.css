@@ -1,0 +1,207 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: #006400;
+    background-size: cover;
+    background-position: center;
+    text-align: left;
+    margin-left: 20px;
+    margin-top:-15px;
+    padding: 0;
+    box-sizing: border-box;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+
+
+}
+
+#start-screen, #game-screen, #rankings-screen {
+    text-align: center;
+    margin-top: 50px; /* Diminui a margem para um layout mais compacto */
+
+}
+
+#start-toggle:checked ~ #start-screen,
+#rankings-toggle:checked ~ #start-screen {
+    display: none;
+}
+
+#start-toggle:checked ~ #game-screen {
+    display: block;
+}
+
+#rankings-toggle:checked ~ #game-screen {
+    display: none;
+}
+
+#rankings-toggle:checked ~ #rankings-screen {
+    display: block;
+
+}
+
+#start-toggle, #rankings-toggle {
+    display: none;
+}
+
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.form-container {
+    margin-top: 20px;
+    font-size:25px;
+
+
+}
+
+.form-container input[type="text"],
+.form-container select {
+    width: 13%; /* Aumenta a largura para uma melhor usabilidade */
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo claro para melhor contraste */
+
+}
+
+button, .form-container button {
+    width: 8%; /* Aumenta a largura do botão */
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 50px; /* Cantos mais arredondados */
+    border: none;
+    background-color: black; /* Cor de fundo vibrante */
+    color: white;
+    cursor: pointer;
+    box-shadow:  5px 6px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    transition: background-color 0.3s, transform 0.2s; /* Adiciona transição ao hover */
+}
+
+button:hover, .form-container button:hover {
+    background-color: #FF4500; /* Cor ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+
+}
+
+
+.label {
+    color: beige;
+}
+
+.memory-game {
+    width: 740px;
+    height: 740px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    align-items: center; /* Centraliza as cartas verticalmente */
+
+
+}
+
+.memory-card {
+    width: calc(30% - 60px); /* Ajuste a largura conforme necessário */
+    height: calc(30% - 0px); /* Ajuste a altura conforme necessário */
+    margin: 15px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.memory-card.flip .front-face {
+    transform: rotateY(180deg);
+}
+
+.memory-card.flip .back-face {
+    transform: rotateY(0deg);
+}
+
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 5px;
+    backface-visibility: hidden;
+}
+
+.back-face {
+    transform: rotateY(180deg);
+}
+
+/* Tamanho das cartas para o nível médio */
+.nivel-medio .memory-card {
+    width: calc(25% - 30px); /* Ajuste a largura conforme necessário */
+    height: calc(30% - 0px); /* Ajuste a altura conforme necessário */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo da largura e altura */
+    margin: 15px;
+}
+
+/* Tamanho das cartas para o nível difícil */
+.nivel-dificil .memory-card {
+    width: calc(16% - 17px); /* Ajuste a largura conforme necessário */
+    height: calc(19% - 0px); /* Ajuste a altura conforme necessário */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo da largura e altura */
+}
+
+.memory-card:active {
+    transform: scale(0.97);
+    transition: transform 0.5s;
+}
+
+/* Estilização adicional para a tabela de rankings */
+
+
+#start-screen, #game-screen, #rankings-screen {
+    text-align: center;
+    margin-top: 50px;
+}
+
+table {
+    width: 30%;
+    margin-top: 20px; /* Espaço acima da tabela */
+    border-collapse: collapse;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+
+
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: black; /* Cor escura para cabeçalhos */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #BDECB6; /* Cor de fundo para linhas pares */
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.30); /* Cor ao passar o mouse */
+}
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.25); /* Cor ao passar o mouse (mais clara) */
+}
+

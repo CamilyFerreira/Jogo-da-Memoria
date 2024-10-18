@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jogo da Memoria</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/css.css"> <!-- Link para o CSS externo -->
+</head>
+<body>
+<div id="start-screen">
+    <img src="/images/carta-iconeeee.png" class="img" alt="carta do início">
+    <div class="form-container">
+        <form action="/iniciar-jogo" method="get">
+            <label for="name">Nome do jogador:</label><br>
+            <input name="nome" id="name" required="" type="text" /><br>
+            <label for="difficulty">Nível de dificuldade</label><br>
+            <select name="dificuldade" id="difficulty" required="">
+                <option value="Fácil">Fácil</option>
+                <option value="Médio">Médio</option>
+                <option value="Difícil">Difícil</option>
+            </select><br>
+            <button type="submit">Iniciar Jogo</button>
+        </form>
+        <button onclick="location.href='/rankings'">Rankings</button>
+    </div>
+</div>
+</body>
+</html>

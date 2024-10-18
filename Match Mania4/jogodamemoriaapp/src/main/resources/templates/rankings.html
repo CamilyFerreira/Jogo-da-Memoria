@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<link rel="shortcut icon" href="/images/favicon.png">
+<link rel="stylesheet" href="/css/css.css"> <!-- Link para o CSS externo -->
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Memoria</title>
+    <style>
+        body {
+            background-color:#006400;;
+            font-family: Arial, sans-serif;
+            color:black;
+            text-align: center;
+        }
+
+        button {
+            width: 10%;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 25px;
+            border: none;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        h1{
+            margin-top: 30px;
+        }
+
+        h2{
+            color: black;
+        }
+
+        table {
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aqui estão os melhores, Jogadores!🏆</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tempo</th>
+                <th>Nível</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="jogador : ${ranking}">
+                <td th:text="${jogador.nome}">Nome do Jogador</td>
+                <td th:text="${jogador.tempo}">Tempo</td>
+                <td th:text="${jogador.nivel}">Nível</td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="location.href='/'">Voltar</button>
+</body>
+</html>

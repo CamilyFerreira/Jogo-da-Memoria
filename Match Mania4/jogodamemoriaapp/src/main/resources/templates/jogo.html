@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Memoria</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/css.css"> <!-- Link para o CSS externo -->
+</head>
+
+<body>
+<section class="memory-game">
+    <!-- As cartas serão geradas dinamicamente pelo JavaScript -->
+</section>
+
+<h2>Encontre os pares, [[${nome}]]!</h2>
+<div id="timer">00:00</div>
+<p>Dificuldade: [[${dificuldade}]]</p>
+
+<form action="salvar-resultado" method="post">
+    <input type="hidden" name="nome" th:value="${nome}"/>
+    <input type="hidden" name="tempo" id="tempoFinal"/>
+    <input type="hidden" name="nivel" th:value="${dificuldade}"/>
+    <button type="submit">Salvar Resultado</button>
+</form>
+
+<div>
+    <button onClick="location.href='/'">Voltar</button>
+</div>
+
+<!-- Removi o código do cronômetro daqui e deixei apenas o script externo -->
+<script src="/js/scripts.js">
+    function endGame() {
+    stopTimer();  // Para o cronômetro
+    updateTempoFinal();  // Atualiza o valor de tempoFinal
+
+    // Desabilitar cliques nas cartas após o término do jogo
+    const allCards = document.querySelectorAll('.memory-card');
+    allCards.forEach(card => card.removeEventListener('click', flipCard));
+
+    // Exibe a mensagem de parabéns
+    alert("Parabéns, vá conferir sua posição no ranking!");
+
+    // Envia o formulário com o tempo final salvo
+    document.querySelector('form').submit();
+}
+
+// Função para calcular e salvar o tempo final no campo hidden
+function updateTempoFinal() {
+    if (startTime) {
+        const tempoFinal = Math.floor((Date.now() - startTime) / 1000);  // Calcula o tempo total em segundos
+        document.getElementById('tempoFinal').value = tempoFinal;  // Salva o valor no campo hidden
+        console.log("Tempo Final salvo:", tempoFinal);  // Log para verificar o valor
+    } else {
+        console.error("Erro: O cronômetro não foi iniciado corretamente.");
+    }
+}
+</script> <!-- Link para o arquivo JavaScript externo -->
+</body>
+</html>
